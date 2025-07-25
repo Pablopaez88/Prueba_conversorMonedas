@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/styles.css">
+    <title>Document</title>
+</head>
+<body>
+   <div class="converter-container">
+        <h1>Conversor de Monedas e Indicadores</h1>
+        
+        <div class="input-group">
+            <label for="amount">Cantidad a convertir:</label>
+            <input type="number" id="amount" placeholder="Ingrese la cantidad" step="0.01" min="0">
+        </div>
+        
+        <div class="input-group">
+            <label for="fromCurrency">De:</label>
+            <select id="fromCurrency">
+                <option value="CLP">Peso Chileno (CLP)</option>
+                <option value="USD">Dólar Observado (USD)</option>
+                <option value="USD_ACUERDO">Dólar Acuerdo (USD)</option>
+                <option value="EUR">Euro (EUR)</option>
+                <option value="UF">Unidad de Fomento (UF)</option>
+                <option value="IVP">Índice de Valor Promedio (IVP)</option>
+                <option value="UTM">Unidad Tributaria Mensual (UTM)</option>
+                <option value="COBRE">Libra de Cobre (USD)</option>
+                <option value="BTC">Bitcoin (BTC)</option>
+            </select>
+        </div>
+        
+        <div class="input-group">
+            <label for="toCurrency">A:</label>
+            <select id="toCurrency">
+                <option value="CLP">Peso Chileno (CLP)</option>
+                <option value="USD">Dólar Observado (USD)</option>
+                <option value="USD_ACUERDO">Dólar Acuerdo (USD)</option>
+                <option value="EUR">Euro (EUR)</option>
+                <option value="UF">Unidad de Fomento (UF)</option>
+                <option value="IVP">Índice de Valor Promedio (IVP)</option>
+                <option value="UTM">Unidad Tributaria Mensual (UTM)</option>
+                <option value="COBRE">Libra de Cobre (USD)</option>
+                <option value="BTC">Bitcoin (BTC)</option>
+            </select>
+        </div>
+        
+        <button id="convertBtn">Convertir</button>
+        <div id="loading">Consultando datos actualizados...</div>
+        <div id="result"></div>
+        <div class="update-info" id="updateInfo"></div>
+        <div class="disclaimer">
+            * Algunas conversiones pueden ser aproximadas. Los valores de Bitcoin y Dólar Acuerdo pueden tener rezago.
+        </div>
+    </div>
+    <div id="chart-container">
+    <div class="chart-title">Histórico últimos 10 días</div>
+    <canvas id="history-chart"></canvas>
+    <div class="chart-note">* Valores en pesos chilenos (CLP)</div>
+</div>
+    <script src="assets/script.js"></script>
+</body>
+</html>
