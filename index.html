@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Document</title>
 </head>
 <body>
-   <div class="converter-container">
+    <div class="converter-container">
         <h1>Conversor de Monedas e Indicadores</h1>
         
         <div class="input-group">
@@ -53,11 +54,19 @@
             * Algunas conversiones pueden ser aproximadas. Los valores de Bitcoin y Dólar Acuerdo pueden tener rezago.
         </div>
     </div>
-    <div id="chart-container">
-    <div class="chart-title">Histórico últimos 10 días</div>
-    <canvas id="history-chart"></canvas>
-    <div class="chart-note">* Valores en pesos chilenos (CLP)</div>
+    <div id="historical-chart-container" class="chart-container">
+    <h3 class="chart-title">
+        Histórico últimos 10 días
+        <span id="chart-indicator-name"></span>
+    </h3>
+    <div class="chart-wrapper">
+        <canvas id="historical-chart"></canvas>
+    </div>
+    <p class="chart-update">
+        Actualizado: <span id="chart-update-date"></span>
+    </p>
 </div>
     <script src="assets/script.js"></script>
+    <script src="assets/historico.js"></script>
 </body>
 </html>

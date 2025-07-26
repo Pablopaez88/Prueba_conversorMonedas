@@ -1,4 +1,16 @@
- let currentRates = {};
+const backupRates = {
+            CLP: { CLP: 1, USD: 0.00105, USD_ACUERDO: 0.00132, EUR: 0.000895, UF: 0.0000255, IVP: 0.0000245, UTM: 0.0000145, COBRE: 0.00022, BTC: 0.0000000085 },
+            USD: { CLP: 948.93, USD: 1, USD_ACUERDO: 1.25, EUR: 0.85, UF: 0.0255, IVP: 0.0245, UTM: 0.0145, COBRE: 0.22, BTC: 0.0000085 },
+            USD_ACUERDO: { CLP: 758.87, USD: 0.8, USD_ACUERDO: 1, EUR: 0.68, UF: 0.0204, IVP: 0.0196, UTM: 0.0116, COBRE: 0.176, BTC: 0.0000068 },
+            EUR: { CLP: 1116.78, USD: 1.18, USD_ACUERDO: 1.47, EUR: 1, UF: 0.03, IVP: 0.0288, UTM: 0.0171, COBRE: 0.26, BTC: 0.00001 },
+            UF: { CLP: 39214.48, USD: 41.34, USD_ACUERDO: 51.67, EUR: 35.0, UF: 1, IVP: 0.96, UTM: 0.57, COBRE: 8.63, BTC: 0.00033 },
+            IVP: { CLP: 40801.22, USD: 43.0, USD_ACUERDO: 53.75, EUR: 36.42, UF: 1.04, IVP: 1, UTM: 0.59, COBRE: 8.98, BTC: 0.00034 },
+            UTM: { CLP: 68923, USD: 72.66, USD_ACUERDO: 90.82, EUR: 61.54, UF: 1.76, IVP: 1.69, UTM: 1, COBRE: 15.17, BTC: 0.00058 },
+            COBRE: { CLP: 4543, USD: 4.79, USD_ACUERDO: 5.99, EUR: 4.06, UF: 0.116, IVP: 0.111, UTM: 0.066, COBRE: 1, BTC: 0.000038 },
+            BTC: { CLP: 117446790, USD: 117446.79, USD_ACUERDO: 146808.49, EUR: 100000, UF: 3000, IVP: 2900, UTM: 1724, COBRE: 26316, BTC: 1 }
+        };
+
+        let currentRates = {};
         let lastUpdate = "";
 
         async function loadExchangeRates() {
@@ -21,7 +33,7 @@
                     UF: { CLP: data.uf.valor },
                     IVP: { CLP: data.ivp.valor },
                     UTM: { CLP: data.utm.valor },
-                    COBRE: { CLP: data.libra_cobre.valor * data.dolar.valor }, 
+                    COBRE: { CLP: data.libra_cobre.valor * data.dolar.valor },
                     BTC: { CLP: data.bitcoin.valor * data.dolar.valor }
                 };
                 
@@ -33,7 +45,6 @@
                         if (from === to) {
                             currentRates[from][to] = 1;
                         } else {
-                            
                             if (from !== 'CLP' && to !== 'CLP') {
                                 currentRates[from][to] = currentRates[from].CLP / currentRates[to].CLP;
                             } else if (from === 'CLP') {
@@ -131,4 +142,3 @@
         document.getElementById('toCurrency').addEventListener('change', async function() {
             await loadExchangeRates();
         });
-        
